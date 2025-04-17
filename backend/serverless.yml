@@ -1,0 +1,27 @@
+service: backend
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+  stage: dev
+  environment:
+    STAGE: ${self:provider.stage}
+
+functions:
+  hello:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+
+custom:
+  serverless-offline:
+    httpPort: 4000
