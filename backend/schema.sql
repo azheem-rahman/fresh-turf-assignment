@@ -29,13 +29,13 @@ CREATE TABLE transactions (
 
 CREATE TABLE photos (
   photo_id UUID PRIMARY KEY,
-  transaction_id UUID REFERENCES transactions(transaction_id),
+  transaction_id UUID NOT NULL REFERENCES transactions(transaction_id),
   type VARCHAR(10) CHECK (type IN ('front', 'back')),
   s3_url VARCHAR(255)
 );
 
 CREATE TABLE signatures (
   signature_id UUID PRIMARY KEY,
-  transaction_id UUID UNIQUE REFERENCES transactions(transaction_id),
+  transaction_id UUID NOT NULL UNIQUE REFERENCES transactions(transaction_id),
   s3_url VARCHAR(255)
 );
