@@ -39,6 +39,12 @@ functions:
       - http:
           path: lockers/available
           method: get
+  assignLocker:
+    handler: src/functions/assignLocker.assignLockerHandler
+    events:
+      - http:
+          path: lockers/assign
+          method: post
 
 custom:
   serverless-offline:
