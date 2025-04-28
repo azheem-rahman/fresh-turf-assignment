@@ -21,6 +21,12 @@ functions:
       - http:
           path: hello
           method: get
+  authenticateUser:
+    handler: src/functions/authenticateUser.authenticateUserHandler
+    events:
+      - http:
+          path: auth/division-pass
+          method: post
 
 custom:
   serverless-offline:
