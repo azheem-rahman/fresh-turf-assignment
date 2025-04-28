@@ -33,6 +33,12 @@ functions:
       - http:
           path: transactions/start
           method: post
+  getAvailableLockers:
+    handler: src/functions/getAvailableLockers.getAvailableLockersHandler
+    events:
+      - http:
+          path: lockers/available
+          method: get
 
 custom:
   serverless-offline:
