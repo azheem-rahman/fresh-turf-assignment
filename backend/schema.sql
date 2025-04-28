@@ -20,7 +20,7 @@ CREATE TABLE lockers (
 CREATE TABLE transactions (
   transaction_id UUID PRIMARY KEY,
   user_id UUID REFERENCES users(user_id) NOT NULL,
-  locker_id UUID REFERENCES lockers(locker_id) NOT NULL,
+  locker_id UUID REFERENCES lockers(locker_id),
   report_number VARCHAR(100) NOT NULL,
   type VARCHAR(20) CHECK (type IN ('deposit', 'withdrawal')) NOT NULL,
   remarks VARCHAR(255),
