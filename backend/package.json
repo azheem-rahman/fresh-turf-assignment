@@ -11,6 +11,7 @@
   "description": "",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.149",
+    "@types/dotenv": "^6.1.1",
     "@types/node": "^22.14.1",
     "@types/pg": "^8.11.14",
     "serverless": "^3.40.0",
@@ -20,6 +21,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "pg": "^8.15.6"
   }
 }
