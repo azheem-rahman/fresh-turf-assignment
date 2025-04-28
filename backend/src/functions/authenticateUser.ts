@@ -1,3 +1,25 @@
+/**
+ * @route
+ * POST /auth/division-pass
+ *
+ * @description
+ * Authenticate user by verifying division_pass_id against users table.
+ *
+ * @request
+ * {
+ *    "division_pass_id": "DIV001"
+ * }
+ *
+ * @response
+ * {
+ *    "succcess": true,
+ *    "data": {
+ *       "user_id": "uuid-of-user",
+ *       "role": "investigator"
+ *    }
+ * }
+ */
+
 import { APIGatewayProxyHandler } from "aws-lambda";
 import { errorResponse, successResponse } from "../utils/response";
 import { pool } from "../lib/db";
