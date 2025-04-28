@@ -27,6 +27,12 @@ functions:
       - http:
           path: auth/division-pass
           method: post
+  startTransaction:
+    handler: src/functions/startTransaction.startTransactionHandler
+    events:
+      - http:
+          path: transactions/start
+          method: post
 
 custom:
   serverless-offline:
