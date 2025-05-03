@@ -65,3 +65,9 @@ functions:
       - http:
           path: photos
           method: post
+  storeSignature:
+    handler: src/functions/storeSignature.storeSignatureHandler
+    events:
+      - http:
+          path: signatures
+          method: post
