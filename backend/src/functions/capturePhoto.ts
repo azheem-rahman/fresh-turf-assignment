@@ -36,6 +36,20 @@ export const capturePhotoHandler: APIGatewayProxyHandler = async (event) => {
       );
     }
 
+    // check if photo already exists for the transaction and type
+    const check = await pool.query(
+      `SELECT 1 FROM photos WHERE transaction_id = $1 AND type = $2`,
+      [transaction_id, type]
+    );
+
+    if (check && check.rowCount! > 0) {
+      return errorResponse(
+        409,
+        "Conflict",
+        `Photo for transaction ${transaction_id} and type ${type} already exists`
+      );
+    }
+
     const photo_id = uuidv4();
 
     // upload photo to S3 and get URL
