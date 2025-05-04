@@ -23,6 +23,7 @@ CREATE TABLE transactions (
   locker_id UUID REFERENCES lockers(locker_id),
   report_number VARCHAR(100) NOT NULL,
   type VARCHAR(20) CHECK (type IN ('deposit', 'withdrawal')) NOT NULL,
+  related_transaction_id UUID REFERENCES transactions(transaction_id)
   remarks VARCHAR(255),
   created_at TIMESTAMP DEFAULT now()
 );
