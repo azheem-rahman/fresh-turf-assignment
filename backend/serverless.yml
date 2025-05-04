@@ -9,10 +9,14 @@ plugins:
   - serverless-plugin-typescript
   - serverless-offline
   - serverless-s3-local
+  - serverless-offline-sns
 
 custom:
   serverless-offline:
     httpPort: 4000
+  serverless-offline-sns:
+    port: 4002
+    debug: true
   s3:
     host: localhost
     port: 8000
@@ -27,6 +31,8 @@ provider:
   stage: dev
   environment:
     STAGE: ${self:provider.stage}
+    SNS_NOTIFICATION_TOPIC_ARN: ${env:SNS_NOTIFICATION_TOPIC_ARN}
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}
 
 functions:
   hello:
@@ -71,3 +77,14 @@ functions:
       - http:
           path: signatures
           method: post
+  sendEmailNotification:
+    handler: src/functions/sendEmailNotification.sendEmailNotificationHandler
+    events:
+      - sns: arn:aws:sns:ap-southeast-1:123456789012:fresh_turf_notifications
+
+resources:
+  Resources:
+    EmailNotificationTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: fresh_turf_notifications
