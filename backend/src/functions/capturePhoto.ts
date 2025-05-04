@@ -21,6 +21,8 @@ import { errorResponse, successResponse } from "../utils/response";
 import { v4 as uuidv4 } from "uuid";
 import { uploadToS3 } from "../utils/uploadToS3";
 import { pool } from "../lib/db";
+import { sendSnsMessage } from "../utils/sendSnsMessage";
+import { NotificationPayload } from "../types/notifications";
 
 export const capturePhotoHandler: APIGatewayProxyHandler = async (event) => {
   try {
@@ -60,6 +62,25 @@ export const capturePhotoHandler: APIGatewayProxyHandler = async (event) => {
       VALUES ($1, $2, $3, $4)`,
       [photo_id, transaction_id, type, s3_url]
     );
+
+    // check transaction type to trigger SNS if Withdrawal (1) transaction
+    const transactionResult = await pool.query(
+      `SELECT type, related_transaction_id FROM transactions WHERE transaction_id = $1`,
+      [transaction_id]
+    );
+
+    const transaction = transactionResult.rows[0];
+    if (
+      transaction.type === "withdrawal" &&
+      !transaction.related_transaction_id
+    ) {
+      const payload: NotificationPayload = {
+        transaction_id,
+        triggered_by: "capturePhoto",
+      };
+
+      await sendSnsMessage(payload);
+    }
 
     return successResponse({ photo_id, s3_url }, 201);
   } catch (error) {
