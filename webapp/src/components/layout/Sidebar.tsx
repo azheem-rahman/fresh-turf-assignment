@@ -10,7 +10,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 h-screen bg-blue-950 text-white flex flex-col">
+    <aside className="w-64 bg-blue-950 text-white flex flex-col">
       <div className="h-24">
         <h2 className="text-xl font-bold p-8">MHA</h2>
       </div>
