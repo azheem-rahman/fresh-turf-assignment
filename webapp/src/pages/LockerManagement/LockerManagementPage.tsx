@@ -1,6 +1,6 @@
 import PageLayout from "../../components/layout/PageLayout";
 
-const LockerManagement = () => {
+const LockerManagementPage = () => {
   return (
     <PageLayout>
       <h1>Locker Management</h1>
@@ -8,4 +8,4 @@ const LockerManagement = () => {
   );
 };
 
-export default LockerManagement;
+export default LockerManagementPage;

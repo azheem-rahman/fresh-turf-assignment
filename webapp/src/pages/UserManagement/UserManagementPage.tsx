@@ -1,6 +1,6 @@
 import PageLayout from "../../components/layout/PageLayout";
 
-const UserManagement = () => {
+const UserManagementPage = () => {
   return (
     <PageLayout>
       <h1>User Management</h1>
@@ -8,4 +8,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default UserManagementPage;
