@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import FormInput from "../../components/form/FormInput";
 import FormPassword from "../../components/form/FormPassword";
+import useUserStore from "../../store/useUserStore";
+import { useNavigate } from "react-router-dom";
 
 type LoginFormInputs = {
   email: string;
@@ -8,6 +10,9 @@ type LoginFormInputs = {
 };
 
 const LoginPage = () => {
+  const setUser = useUserStore((state) => state.setUser);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -15,7 +20,14 @@ const LoginPage = () => {
   } = useForm<LoginFormInputs>();
 
   const onSubmit = (formData: LoginFormInputs) => {
-    console.log("Logging in with: ", formData);
+    console.log(formData);
+    const mockUser = {
+      name: "Tan Kai Yee",
+      role: "Case Store Officer",
+    };
+
+    setUser(mockUser);
+    navigate("/transaction-history");
   };
 
   return (
