@@ -1,10 +1,10 @@
-import DashboardLayout from "../../components/layout/DashboardLayout";
+import PageLayout from "../../components/layout/PageLayout";
 
 const TransactionHistoryPage = () => {
   return (
-    <DashboardLayout>
+    <PageLayout>
       <h1>Transaction History</h1>
-    </DashboardLayout>
+    </PageLayout>
   );
 };
 

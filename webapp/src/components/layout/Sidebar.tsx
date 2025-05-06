@@ -11,7 +11,9 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 h-screen bg-blue-950 text-white flex flex-col">
-      <h2 className="text-xl font-bold p-8">MHA</h2>
+      <div className="h-24">
+        <h2 className="text-xl font-bold p-8">MHA</h2>
+      </div>
       <hr className="border-t border-gray-600" />
       <h3 className="text-md pl-8 pt-4 text-gray-500">MENU</h3>
       <nav className="flex flex-col p-4">

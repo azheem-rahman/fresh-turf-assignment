@@ -1,10 +1,10 @@
-import DashboardLayout from "../../components/layout/DashboardLayout";
+import PageLayout from "../../components/layout/PageLayout";
 
 const UserManagement = () => {
   return (
-    <DashboardLayout>
+    <PageLayout>
       <h1>User Management</h1>
-    </DashboardLayout>
+    </PageLayout>
   );
 };
 

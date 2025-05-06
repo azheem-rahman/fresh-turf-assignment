@@ -1,10 +1,10 @@
-import DashboardLayout from "../../components/layout/DashboardLayout";
+import PageLayout from "../../components/layout/PageLayout";
 
 const LockerManagement = () => {
   return (
-    <DashboardLayout>
+    <PageLayout>
       <h1>Locker Management</h1>
-    </DashboardLayout>
+    </PageLayout>
   );
 };
 
