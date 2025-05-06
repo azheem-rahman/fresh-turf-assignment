@@ -1,5 +1,13 @@
 import { ListFilter, Search } from "lucide-react";
 import PageLayout from "../../components/layout/PageLayout";
+import { mockTransactions } from "./mockTransactions";
+
+const transactionActivityColourMap: Record<string, string> = {
+  Collection: "text-green-500",
+  Access: "text-purple-500",
+  Deposit: "text-blue-500",
+  Withdrawal: "text-red-500",
+};
 
 const TransactionHistoryPage = () => {
   return (
@@ -38,26 +46,25 @@ const TransactionHistoryPage = () => {
             <tr>
               <th className="px-4 py-3 w-48">Time Stamp</th>
               <th className="px-4 py-3 w-24">User</th>
-              <th className="px-4 py-3 w-40">Role</th>
+              <th className="px-4 py-3 w-48">Role</th>
               <th className="px-4 py-3 w-24">Cell</th>
               <th className="px-4 py-3 w-auto">Activity</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border-t h-16">
-              <td className="px-4 py-2">09/11/23 10:10</td>
-              <td className="px-4 py-2">ABC</td>
-              <td className="px-4 py-2">Super Admin</td>
-              <td className="px-4 py-2">03</td>
-              <td className="px-4 py-2">Collection</td>
-            </tr>
-            <tr className="border-t h-16">
-              <td className="px-4 py-2">09/11/23 10:10</td>
-              <td className="px-4 py-2">ABC</td>
-              <td className="px-4 py-2">Super Admin</td>
-              <td className="px-4 py-2">03</td>
-              <td className="px-4 py-2">Collection</td>
-            </tr>
+            {mockTransactions.map((tx, idx) => (
+              <tr key={idx} className="border-t h-16">
+                <td className="px-4 py-2">{tx.timeStamp}</td>
+                <td className="px-4 py-2">{tx.user}</td>
+                <td className="px-4 py-2">{tx.role}</td>
+                <td className="px-4 py-2">{tx.cell}</td>
+                <td className="px-4 py-2 font-semibold">
+                  <span className={transactionActivityColourMap[tx.activity]}>
+                    {tx.activity}
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
