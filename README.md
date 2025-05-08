@@ -135,3 +135,60 @@ All responses follow a standardised format.
 
 - S3 Data is stored in mock-s3-data folder (server auto creates folder if does not exist)
 - SNS messages are routed locally and log to console
+
+# Webapp
+
+## Description
+
+A simple React-based admin portal to manage locker transactions (using placeholder data)
+
+## Tech Stack
+
+- React (via Vite)
+- TypeScript
+- Tailwind CSS
+- Zustand (state management)
+- React Router DOM
+- Lucide React Icons
+
+## Folder Structure
+
+```bash
+src/
+├── components/
+│   ├── form/               # Form field components
+│   └── layout/             # Sidebar, Header, Page Layout
+├── pages/
+│   ├── LockerManagement/
+│   ├── Login/
+│   └── TransactionHistory/
+│       ├── TransactionHistoryPage.tsx
+│       └── mockTransactions.ts
+│   ├── UserManagement/
+├── store/                  # Zustand store (user auth state)
+├── App.tsx                 # Main routing and layout
+└── main.tsx                # React root render
+```
+
+## Installation
+
+### Clone the project
+
+```
+git clone https://github.com/azheem-rahman/fresh-turf-assignment.git
+cd fresh-turf-assignment/backend
+```
+
+### Install Dependencies
+
+```
+npm install
+```
+
+### Start dev server
+
+```
+npm run dev
+```
+
+> Open app at `http://localhost:5173`
