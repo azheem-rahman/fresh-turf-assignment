@@ -16,10 +16,17 @@ The backend system in this project was developed based on requirements derived f
 
 ## Folder Structure
 
-- src/functions/ – all lambda functions
-- src/lib/ – reusable libs (e.g. DB, S3, SNS)
-- src/utils/ – utility helpers (e.g. response formatting)
-- mock-s3-data/ – local file uploads (auto-generated)
+```bash
+├── mock-s3-data/   # local file uploads (photos, signatures)
+├── src/
+│   ├── functions/  # all lambda functions
+│   ├── lib/        # reusable libs e.g. DB, S3, SNS
+│   ├── types/      # define types e.g. notifications
+│   ├── utils/      # utility helpers e.g. response formatting
+├── schema.sql      # DB schema
+└── seed.sql        # sample data for testing
+```
+
 - schema.sql – DB schema
 - seed.sql – sample data for testing
 
